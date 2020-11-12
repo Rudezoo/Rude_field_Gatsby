@@ -1,0 +1,9 @@
+@font-face{
+    font-family: Gothic;
+    font-style: normal;
+    src: url('../font/GothicA1-Medium.ttf') format('truetype');
+}
+ 
+.Content{
+    font-family: Gothic; 
+}

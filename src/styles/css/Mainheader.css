@@ -1,0 +1,12 @@
+header{
+    color: white;
+    margin-top: 10px;
+}
+
+.HeaderMenu{
+    display: flex;
+    width : 100%;
+    text-Align: center;
+    font-size: 35px;
+    margin-top: 10px;
+  }

@@ -1,0 +1,88 @@
+
+ @font-face{
+   font-family: Bitmap;
+   font-style: normal;
+   src: url('../font/BitmapMiddleFont.ttf') format('truetype');
+ }
+ @font-face{
+   font-family: Gothic;
+   font-style: normal;
+   src: url('../font/GothicA1-Medium.ttf') format('truetype');
+ }
+
+.Main{
+    -webkit-font-smoothing: antialiased;
+    background-image: url('../../images/back2.png');
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    zoom: 100%;
+    font-family: Bitmap; 
+    width: 100%;
+    height: 100vh;
+    color: white;
+  }
+
+  .blur {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(3px); 
+  height: 100%;
+}
+#Content{
+  margin: 20px;
+  font-family: Gothic;
+
+}
+
+footer{
+  margin: 20px;
+  
+}
+/* #icondiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top:50px;
+  opacity: 0.8;
+}
+#icondiv:hover{
+  -webkit-transform: scale(1.5) translate(-33%, -33%);
+  -webkit-transition: 1s;
+}
+ */
+.logo{
+  text-decoration: none;
+  text-align: center;
+}
+
+.logo_inside{
+    
+    
+   margin-top: 5px;
+    text-align: center;
+    border-right: 8px solid rgba(255,255,255,.75);
+    font-size: 95px;
+    white-space: nowrap;
+    overflow: hidden;
+    height: 100%;
+    
+} 
+
+/* Animation */
+.anim-typewriter{
+  animation: typewriter 1.5s steps(10) 1s 1 normal both,    
+              blinkTextCursor 500ms steps(44) infinite normal;      
+}
+
+
+@keyframes typewriter{
+  from{width: 0;}
+  to{width: 100%;}
+}
+@keyframes blinkTextCursor{
+  from{border-right-color: rgba(255,255,255,.75);}
+  to{border-right-color: transparent;}
+}
