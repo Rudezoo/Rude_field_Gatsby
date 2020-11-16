@@ -6,6 +6,9 @@ import { useSpring, animated, interpolate } from 'react-spring';
 import { Search, ChevronLeft, ChevronRight, Menu, Palette, ChevronLeftOutlined, GitHub } from '@material-ui/icons';
 import '../../styles/css/Mainheader.css'
 import MainMenu from './MainMenu'
+import { authService } from '../../Config/myFB'
+
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -54,9 +57,11 @@ const useStyles = makeStyles((theme) => ({
 
 const MainHeader = () => {
     const classes = useStyles();
-
+    const [FreefireisToggeld, setFreefireisToggeld] = useState(false);
     const [{ st, xy }, set] = useSpring(() => ({ st: 0, xy: [0, 0] }))
-
+    const { y } = useSpring({
+        y: FreefireisToggeld ? 180 : 0
+    });
 
 
 
@@ -67,6 +72,8 @@ const MainHeader = () => {
     const [progress, setProgress] = React.useState(10);
 
     const [menuvisible, setmenuvisible] = useState(true);
+
+ 
 
     const style = useSpring({
         width: state ? "22px" : "100%",
@@ -82,6 +89,26 @@ const MainHeader = () => {
     const CollapIn = () => {
         toggle(!state)
     }
+
+ 
+
+    const RadioContent = () => {
+        return (
+            <div className="radiocontent">
+                <Link className="radioLink" to="/app/Freefire/">Home</Link>
+                {authService.currentUser? <Link className="radioLink" to="/app/Freefire/Profile">Profile</Link>:null }
+                
+            </div>
+        );
+    };
+
+
+    const menuAppear = useSpring({
+        transform: FreefireisToggeld ? "translate3D(0,0,0)" : "translate3D(0,-40px,0)",
+        opacity: FreefireisToggeld ? 1 : 0,
+
+    });
+
 
     return (
         <>
@@ -111,7 +138,7 @@ const MainHeader = () => {
                     <Box style={{
                         backgroundColor: "rgba(0, 0, 0, 0.5)",
                     }}>
-                        <Grid container spacing={3}>
+                        <Grid container spacing={3} >
                             <Grid container item xs={2} alignItems="center">
                                 <Box display="flex " alignItems="center">
                                     <IconButton onClick={() => setopen(!open)} style={{
@@ -149,15 +176,15 @@ const MainHeader = () => {
                                 <Grid item xs={4} >
 
                                     <div className="HeaderMenu">
-                                        <Grid container spacing={6} alignItems="center" >
+                                        <Grid container spacing={2} alignItems="center" >
                                             <Grid item xs={4} >
-                                                <Link to="/app/About">About</Link>
+                                                <Link to="/app/About" className="Link">About</Link>
                                             </Grid>
                                             <Grid item xs={4}>
-                                                <Link to="/app/Code">Code</Link>
+                                                <Link to="/app/Code" className="Link">Code</Link>
                                             </Grid>
                                             <Grid item xs={4}>
-                                                <Link to="/app/Study">Study</Link>
+                                                <Link to="/app/Study" className="Link">Study</Link>
                                             </Grid>
 
                                         </Grid>
@@ -167,32 +194,32 @@ const MainHeader = () => {
 
                                 </Grid>
                                 <Grid item xs={4}>
-
-
-                                    <div className="logo_inside anim-typewriter">Rude_Field</div>
-
-
-
+                                    <div className="logo_inside anim-typewriter" ><Link to="/app" className="Link">Rude_Field</Link></div>
                                 </Grid>
                                 <Grid item xs={4}>
-                                    {/*                                                     <div className={classes.gas2}>
-
-                        <img src={mainimg_sub} style={{
-                            transform: "rotate(90deg)",
-                            objectPosition: "-160px 0px"
-                        }}></img>
-                    </div> */}
 
                                     <div className="HeaderMenu">
                                         <Grid item container spacing={6} >
                                             <Grid item xs={4}>
-                                                <Link to="/app/Game">Game</Link>
+                                                <Link to="/app/Game" className="Link">Game</Link>
                                             </Grid>
                                             <Grid item xs={4}>
-                                                <Link to="/app/Music">Music</Link>
+                                                <Link to="/app/Music" className="Link">Music</Link>
                                             </Grid>
                                             <Grid item xs={4}>
-                                                <Link to="/app/Freefire">Freefire</Link>
+                                                {/* <Link to="/app/Freefire" className="Link">Freefire</Link> */}
+                                                <animated.button onClick={() => setFreefireisToggeld(!FreefireisToggeld)} className="radiowrapper">
+                                                    Freefire
+                                                    <animated.p style={{
+                                                        transform: y.interpolate(y => `rotateX(${y}deg)`)
+                                                    }} className="radiobutton">
+                                                        ▼
+                                                    </animated.p>
+                                                </animated.button>
+                                                <animated.div style={menuAppear}>
+                                                    {FreefireisToggeld ? <RadioContent /> : null}
+                                                </animated.div>
+
                                             </Grid>
                                         </Grid>
 
@@ -205,7 +232,7 @@ const MainHeader = () => {
                             <Grid item xs={2}>
                                 <Box position="relative">
                                     <GitHub onClick={OpenProfile} style={{
-                                        marginTop: "10px",
+                                        marginTop: "20px",
                                         float: "right",
                                         marginRight: "20px"
                                     }}></GitHub>

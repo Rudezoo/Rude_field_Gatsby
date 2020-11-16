@@ -9,4 +9,54 @@ header{
     text-Align: center;
     font-size: 35px;
     margin-top: 10px;
+}
+.Link{
+    text-decoration: none;
+    color: white;
+}
+
+.Link:hover{
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.5);
+}
+.Link:visited{
+    text-decoration: none;
+    color: white;
+}
+.radiocontent {
+    display: flex;
+    flex-flow: column nowrap;
+    font-size: 30px;
+    justify-content: center;
+    margin-left: 15px;
+    width: 100%;
+    margin-top: 10px;    
   }
+ .radiowrapper{
+    display: flex;
+    border: none;
+    color: white;
+    margin-bottom: 0px;
+    background-color: rgba(0, 0, 0, 0);
+
+ } 
+ .radiowrapper:hover{
+    text-decoration: none;
+    color: rgb(109, 109, 109);
+ }
+ .radiobutton{
+    margin-top: 5px;
+    font-size: 20px;
+ }
+.radioLink{
+    text-decoration: none;
+    color: white;
+}
+ .radioLink:hover{
+    text-decoration: none;
+    color: rgb(109, 109, 109);
+ }
+ .radioLink:visited{
+    text-decoration: none;
+}
+ 
